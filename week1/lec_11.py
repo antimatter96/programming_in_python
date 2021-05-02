@@ -1,0 +1,10 @@
+s="0123456789"
+print(s)
+print(s[0])
+print(s[1])
+print(s[1], type(s[1]))
+print(s[1:5])
+print(s[1:8])
+print(s[4]+ s[7])
+print(int(s[4])+ int(s[7]))
+print(int(s[4]+s[7]))
