@@ -1,0 +1,6 @@
+{
+  "python.formatting.provider": "yapf",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "python.pythonPath": "/usr/local/opt/python@3.9/bin/python3.9"
+}
