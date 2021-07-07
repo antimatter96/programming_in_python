@@ -1,46 +1,31 @@
-# sort then search
+def solution():
+  '''
+    1. Process version_1.txt and version_2.txt
+    2. Print the number lines in version_2.txt that are not in version_1.txt
+    '''
+  f = open("version_1.txt", "r")
+  g = open("version_2.txt", "r")
 
-def min_in_list(l):
-  minimun = l[0]
-  for e in l:
-    if e < minimun:
-      minimun = e
-  return minimun
+  lines1 = list()
+  line = f.readline().strip()
+  while line:
+    lines1.append(line)
+    line = f.readline().strip()
 
-def simple_sort(l):
-  sorted_list = []
-  while len(l) > 0:
-    minimum = min_in_list(l)
-    l.remove(minimum)
-    sorted_list.append(minimum)
+  lines2 = list()
+  line = g.readline().strip()
+  while line:
+    lines2.append(line)
+    line = g.readline().strip()
 
-  return sorted_list
+  count = 0
+  for x in lines2:
+    if x == '':
+      continue
+    if x not in lines1:
+      count = count + 1
 
-s1 = simple_sort([1,2,3,5,8,9])
-s2 = simple_sort([8,7,5,1,2,2,0])
+  return count
 
-def simple_search(l, k):
-  if len(l) == 0:
-    return False
 
-  mid = (0 + len(l)-1)//2
-
-  if len(l) > 1:
-    if l[mid] == k:
-      return True
-
-  if len(l) == 1:
-    if l[mid] == k:
-      return True
-    else:
-      return False
-
-  if k > l[mid]:
-    return simple_search(l[mid+1:], k)
-  elif k < l[mid]:
-    return simple_search(l[:mid-1], k)
-
-print(simple_search(s1, 1))
-print(simple_search(s1, -1))
-print(simple_search(s1, 0))
-print(simple_search(s1, 10))
+print(solution())

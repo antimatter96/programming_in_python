@@ -1,19 +1,50 @@
-# max_element
+def highest_grossing(yearFrom, yearUpto, genre):
+  '''
+    Arguments:
+    	yearFrom: int
+    	yearUpto: int
+    	genre: string
+    Returns:
+    	movie_name: string
+    '''
 
-def max_of_two(a, b):
-  if a > b:
-    return a
-  else:
-    return b
+  gross_index = 9
+  year_index = 2
 
-def max_element(l):
-  if len(l) == 1:
-    return l[0]
+  convert_to_int = [gross_index, year_index]
+  f = open("IMDB_reviews.csv", "r")
+  lines = f.readlines()
+  for i in range(len(lines)):
+    lines[i] = lines[i].strip().split(',')
+    if i != 0:
+      for index in convert_to_int:
+        if lines[i][index] != '':
+          lines[i][index] = int(lines[i][index])
+        else:
+          lines[i][index] = 0
 
-  if len(l) == 2:
-    return max_of_two(l[0], l[1])
+  name_index = 1
+  genre_index = 4
 
-  return max_of_two(l[0], max_element(l[1:]))
+  max_gross = 0
+  max_gross_movie = ''
 
-print(max_element([1,2,3,4]))
-print(max_element(["abc", "b", "c","d"]))
+  for movie in lines[1:]:
+    if genre in movie[genre_index] and movie[year_index] >= yearFrom and movie[
+        year_index] <= yearUpto:
+      if movie[gross_index] > max_gross:
+        max_gross_movie = movie[name_index]
+        max_gross = movie[gross_index]
+
+  return max_gross_movie
+
+
+# ###
+# import pandas as pd
+
+    # movies = pd.read_csv("IMDB_reviews.csv")
+    # i = movies[ (movies["year"] <= 1990) & (movies["year"] >= 1980) & (movies ["genre"] == "Drama")]["gross"].max()
+    # print(movies[ movies["gross"] == i ]["name"])
+
+    # i = movies[ (movies["year"] <= 2021) & (movies["year"] >= 2000) & (movies ["genre"] == "Fantasy")]["gross"].max()
+    # print(movies[ movies["gross"] == i ]["name"])
