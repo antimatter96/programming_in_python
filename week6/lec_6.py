@@ -24,3 +24,9 @@ for key in d:
 print(d.keys())
 print(d.values())
 print(d.items()) # lost of tuples
+
+d.pop("key")
+
+# or
+
+del d["key"]

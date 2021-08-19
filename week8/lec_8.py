@@ -1,9 +1,6 @@
 # binary search -> recursion
 
 def rec_binary_search(l:list[int],k:int, begin, end):
-  ## find half of list where element might help
-  ## search in that half
-
   if end >= len(l):
     print("end out")
     return 0
@@ -15,18 +12,6 @@ def rec_binary_search(l:list[int],k:int, begin, end):
   if begin > end:
     print("begin > end")
     return 0
-
-  # if begin == end:
-  #   if k == l[end]:
-  #     return 1
-  #   else:
-  #     return 0
-
-  # if end - begin == 1:
-  #   if k == l[end] or k == l[begin]:
-  #     return 1
-  #   else:
-  #     return 0
 
   # 2 or more elements
   mid_point = (end+begin)//2

@@ -20,10 +20,10 @@ while(s != ''):
 
 if flag == 0:
   print("Not found")
-
 f.close()
 ## OR
 
+print("===================", "\n\n\n")
 # prints
 # asd
 #
@@ -32,6 +32,7 @@ f.close()
 f = open("file.txt", 'r')
 for line in f:
   print(line)
+  print(line.strip())
 f.close()
 
 # prints
